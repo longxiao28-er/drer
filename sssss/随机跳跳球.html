@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style>
+			#box{
+				width: 800px;height: 500px;border: 2px solid #000000;position: relative;
+				background-color: #A9A9A9;
+			}
+			#quan{
+				width: 50px;height: 50px;position: absolute;border: 1px solid saddlebrown;
+				border-radius: 50px;background-color: #0000FF;
+			}
+			#anniu{width: 200px;height: 50px;position: absolute;left: 300px;top: 585px;}
+		</style>
+	</head>
+	<body>
+		<h2>随机变换位置球，点到有惊喜</h2>
+		<hr />
+		<button type="button" id="anniu">开始跳球</button>
+		<div id="box">
+			<div id="quan"></div>
+		</div>
+		<script>
+			var box = $('box');
+			var quan = $('quan');
+			var anniu = $('anniu');
+			var tint = null;
+			var noo = 50;
+			anniu.onclick = function(){
+				
+				clearInterval(tint);
+				tint = setInterval(function(){
+					quan.style = "width:"+(noo-10)+"px;height:"+(noo-10)+"px";
+					suiji();
+				},1500)
+			}
+			quan.onclick = function(){
+				
+				clearInterval(tint);
+				quan.style = "width:"+(noo-10)+"px;height:"+(noo-10)+"px";
+			}
+			function suiji(){
+				quan.style = "left:"+sj(0,749)+"px;top:"+sj(0,449)+"px";
+			}
+			function $(id){
+				return document.getElementById(id);
+			}
+			function sj(jie,no){
+				return Math.round(Math.random()*(no-jie)+jie);
+			}
+		</script>
+	</body>
+</html>
