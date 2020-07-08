@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script src="./jquery-3.5.1.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<progress max="100" ></progress>
+		<button type="button">暂停</button>
+		<button>停止</button>
+	</body>
+	<script type="text/javascript">
+		$(function(){
+			var i = 0;
+			var topy = true;
+			
+			// tier = setInterval(function(){
+			// 	i++;
+			// 	$("progress").attr("value",""+i+"");
+			// 	if(i==100){
+			// 		alert("进度完成");
+			// 		clearInterval(tier);
+			// 	}
+			// },100)
+			$("button:eq(0)").click(function(){
+			if(topy == true){
+				
+				topy=!topy
+				$("button:eq(0)").html("开始");
+				tier = setInterval(function(){
+						i++;
+						
+						$("progress").attr("value",""+i+"");
+						if(i==100){
+							alert("进度完成");
+							clearInterval(tier);
+						}
+				},100)
+				console.log(topy)
+			}else{
+					clearInterval(tier);
+					
+					$("button:eq(0)").html("暂停");
+					return topy = true;
+					
+			}
+			})
+			$("button:eq(1)").click(function(){
+				if($("button:eq(0)").html("暂停")){
+					$("button:eq(0)").html("开始");
+				}else{
+					$("button:eq(0)").html("暂停");
+				}
+				
+				i=0;
+				$("progress").attr("value",""+i+"");
+				clearInterval(tier);
+			})
+			
+		})
+		
+	</script>
+</html>
